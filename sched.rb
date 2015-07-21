@@ -1,43 +1,58 @@
-class Schedule < Shoes
-  def initialize start_date, end_date
-  	@sd, @ed = start_date, end_date
-  end
-end
+require 'date'
+
+
+#defining constants
+$DAYS = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 
 
 #the following will load the current schedule.
-class Loader
+class Loader < Shoes
   def initialize
-
+    @date = DateTime.now #get current date
+    if @date.cwday === 7 
+      @fresh = true
+    else
+      @fresh = true
+    end
   end
-  def get_day
-
+  def weekday
+    @date.cwday
   end
-  def get_employees
-
+  def mdate
+    @date.day
   end
-  
-  def missing?
-
+  def spawn_buttons
+    btns = []
+    if @fresh === true
+      0.upto(6) do |x|
+        tmp = x + @date.day
+        btns.push("#{$DAYS[x]} #{tmp}")
+      end
+    else
+      puts "hi!"
+    end
+    btns
+  end
+  def fresh?
+    @fresh
   end
 end
 
 
-def load
 
-end
+
+#        button("#{x}").style width:100, height:100
+
 
 
 Shoes.app(title: "Baesler's Scheduling Application") do
   def init
-    dates = load
+    loader = Loader.new
     flow {
-      1.upto(7) do |x|
-        button("#{x}").style width:100, height:100
-      end
+      a = loader.spawn_buttons
+      a.each {|x| button("#{x}").style width:100, height:100}
     }
   end
-  
   
   flow do
   	@shed = button "New"
@@ -50,8 +65,11 @@ Shoes.app(title: "Baesler's Scheduling Application") do
  @mainview = init
 
 
- @shed.click{
-   @mainview.toggle
- }
+  @shed.click{
+    @mainview.toggle
+  }
+  @employees.click{
+    @mainview.toggle
+  }
 
 end
