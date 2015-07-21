@@ -77,7 +77,7 @@ Shoes.app(title: "Baesler's Scheduling Application") do
   def emps_load
     emps = @loader.load_employees
     emps.each do |x|
-      button("#{x[:name]}").style width:50, height:50
+      button("#{x[:name]}").style(width:50, height:50).click{button("hello!!")} #this will work!!!!
     end
   end
   
