@@ -1,0 +1,3 @@
+class Mocker
+
+end
