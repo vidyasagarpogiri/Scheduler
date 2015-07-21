@@ -108,9 +108,33 @@ Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, r
         stack {
           #dropdown option list
           border black, strokewidth: 5
-          stack height: 20 do 
+          flow height: 20 do 
             border black, strokewidth: 1
             para "Monday: #{x[:mon]}"
+            button("7A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("8A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("9A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("10A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("11A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("12P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("1P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("2P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("3P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("4P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("5P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("6P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("7P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("8P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("9P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("10P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("11P").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("12A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("1A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("2A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("3A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("4A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("5A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
+            button("6A").style(background rgb(255, 92, 62), height: 15 width: 15).click(background rgb(0, 214, 0))
           end
           stack height: 20 do 
             border black, strokewidth: 1
