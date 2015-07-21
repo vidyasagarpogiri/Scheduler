@@ -8,6 +8,7 @@ $DAYS = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 
 
 Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, resizable: true) do
+  require 'spreadsheetmock'
   ##static menu bar##
   flow do
     @shed = button "New"
@@ -24,6 +25,7 @@ Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, r
   @btns = {}
   @history = [] #this may be a bad approach but we'll try it
   @active = []
+  @active.push(@shed, @editbutton, @employees, @sdays, @makenote, @backbutton)
   @loader = Loader.new
   def init
     flow {
