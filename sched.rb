@@ -1,6 +1,6 @@
 require 'date'
-
-
+$LOAD_PATH << "."
+`update.bat`
 #defining constants
 $DAYS = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 
@@ -66,40 +66,94 @@ end
 
 
 
-Shoes.app(title: "Baesler's Scheduling Application") do
+Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, resizable: true) do
+  ##static menu bar##
+  flow do
+    @shed = button "New"
+    @editbutton = button "Edit"
+    @employees = button "Employees"
+    @sdays = button "Special Days"
+    @makenote = button "Make Note"
+    @backbutton = button "Go Back"
+  end
+  ##end static menu bar##
+
+  #ALL SETTING UP THE APPLICATION#
+
+  @btns = {}
+  @history = [] #this may be a bad approach but we'll try it
+  @active = []
   @loader = Loader.new
   def init
     flow {
+      nbtn = 0
       a = @loader.spawn_buttons
-      a.each {|x| button("#{x}").style width:100, height:100}
+      a.each {|x| @btns[nbtn+=1] = button("#{x}").style(width:100, height:100)}
+      load_active a
     }
+  end
+  def destroy_active
+    @history.push(@active.pop) while @active.length > 0
+  end
+  def load_active which
+    which.each do |btn|
+      @active.push(btn)
+    end
   end
   def emps_load
     emps = @loader.load_employees
     emps.each do |x|
       button("#{x[:name]}").style(width:50, height:50).click{
-        
+        destroy_active
+        stack {
+          #dropdown option list
+          border black, strokewidth: 5
+          stack height: 20 do 
+            border black, strokewidth: 1
+            para "Monday: #{x[:mon]}"
+          end
+          stack height: 20 do 
+            border black, strokewidth: 1
+            para "Tuesday: #{x[:tue]}"
+          end
+          stack height: 20 do 
+            border black, strokewidth: 1
+            para "Wednesday: #{x[:wed]}"
+          end
+          stack height: 20 do 
+            border black, strokewidth: 1
+            para "Thursday: #{x[:thu]}"
+          end
+          stack height: 20 do 
+            border black, strokewidth: 1
+            para "Friday: #{x[:fri]}"
+          end
+          stack height: 20 do 
+            border black, strokewidth: 1
+            para "Saturday: #{x[:sat]}"
+          end
+          stack height: 20 do
+            border black, strokewidth: 1
+            para "Sunday: #{x[:sun]}"
+          end
+        }
       } #this will work!!!!
     end
   end
-  
-  flow do
-  	@shed = button "New"
-  	@editbutton = button "Edit"
-    @employees = button "Employees"
-    @sdays = button "Special Days"
-    @makenote = button "Make Note"
-  end
-
-  @mainview = init
+  #END APPLICATION SETUP
 
 
+  #BEGIN ACTUAL APPLICATION
+
+  init
   @shed.click{
-    @mainview.toggle
+    #put something to select a week here
   }
   @employees.click{
-    @mainview.toggle
-    emps_load
+    #listbox eventually maybe
+    destroy_active
+    a = emps_load
+    load_active a
   }
 
 end
