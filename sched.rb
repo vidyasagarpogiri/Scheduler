@@ -1,11 +1,13 @@
 $LOAD_PATH << "."
-require 'loader'
+#require 'loader'
 #require 'foursh'
-require 'schutil'
+#require 'schutil'
 #`update.bat` updater but dont run right now
 #defining constants
 
-class Interface < Shoes
+Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, resizable: true) do
+
+  #USER INTERFACE -> FOURSH.RB#
   flow {
     @shed = button "New"
     @editbutton = button "Edit"
@@ -14,5 +16,7 @@ class Interface < Shoes
     @makenote = button "Make Note"
     @backbutton = button "Go Back"
   }
+  #END UI#
+
+
 end
-Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, resizable: true)
