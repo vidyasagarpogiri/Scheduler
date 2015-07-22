@@ -1,6 +1,8 @@
 #the following will load the current week / schedule.
+require 'date'
 class Loader
-  def initialize
+  @days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+  def set_date
     @date = DateTime.now #get current date
     if @date.cwday === 7 #if its sunday, we're fresh
       @fresh = true
@@ -15,40 +17,19 @@ class Loader
     @date.day
   end
   def spawn_buttons
-    btns = []
+    @btns = []
     if @fresh === true
       0.upto(6) do |x|
         tmp = x + @date.day
-        btns.push("#{$DAYS[x]} #{tmp}")
+        @btns.push("#{$DAYS[x]} #{tmp}")
       end
     else
       sundate = @date.day - @date.cwday
       0.upto(6) do |x|
         tmp = x+sundate
-        btns.push("#{$DAYS[x]} #{tmp}")
+        @btns.push("#{tmp}")
       end
     end
-    btns
-  end
-  #for now, the employees will just be a .txt file, separated by columns
-  def load_employees
-    employees = []
-    path = "employees.txt"
-    fd = File.open(path, "r")
-    fd.each_line do |line|
-      emp = {}
-      a = line.split
-      name = a[0]
-      emp[:name] = name
-      emp[:mon] = a[1]
-      emp[:tue] = a[2]
-      emp[:wed] = a[3]
-      emp[:thu] = a[4]
-      emp[:fri] = a[5]
-      emp[:sat] = a[6]
-      emp[:sun] = a[7]
-      employees.push(emp)
-    end
-    employees
+    @btns
   end
 end

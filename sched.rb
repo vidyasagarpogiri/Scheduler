@@ -1,5 +1,7 @@
 $LOAD_PATH << "."
-#require 'loader'
+require 'calendar'
+#require 'employee'
+#require 'dbengine'
 #require 'foursh'
 #require 'schutil'
 #`update.bat` updater but dont run right now
@@ -17,6 +19,10 @@ Shoes.app(title: "Baesler's Scheduling Application", width: 1024, height: 768, r
     @backbutton = button "Go Back"
   }
   #END UI#
+  #CALENDAR -> CALENDAR.RB#
+    calendar = Calendar.new
+    calendar.spawn_buttons.each {|btn| button(btn, width:75, height:75)}
+  #END CALENDAR#
 
 
 end
