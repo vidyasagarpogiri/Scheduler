@@ -6,7 +6,7 @@ require 'mongo'
 class DBEngine
   def initialize
   	load_db
-  	@url = "mongodb://#{@username}:#{@password}@ds049288.mongolab.com:49288/scheduler"
+  	@url = "mongodb://#{@username}:#{@password}@#{@base_url}"
     @client = Mongo::Client.new(@url)
   end
   def load_db
@@ -17,10 +17,14 @@ class DBEngine
   		a = line.split
   		@username = a[0]
   		@password = a[1]
+      @base_url = a[2]
   	end
   end
-  def connect
-
+  def rcv_employee
+    
+  end
+  def update_employee
+    
   end
 end
 
