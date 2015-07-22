@@ -1,8 +1,10 @@
 $LOAD_PATH << "."
-require 'loader'
+require 'lib/loader'
 class Calendar < Loader
   def initialize
     set_date
   end
-  def 
+  def select_day which
+  	#call the db engine
+  end
 end

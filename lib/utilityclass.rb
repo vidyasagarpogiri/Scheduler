@@ -1,7 +1,7 @@
 $LOAD_PATH << "."
-require 'foursh'
-require 'loader'
-require 'dbengine'
+require 'lib/interface'
+require 'lib/loader'
+require 'lib/dbengine'
 
 
 class UtilityClass

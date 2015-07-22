@@ -1,5 +1,5 @@
 $LOAD_PATH << "."
-require 'calendar'
+require 'lib/calendar'
 #require 'employee'
 #require 'dbengine'
 #require 'schedule'

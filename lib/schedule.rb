@@ -1,4 +1,4 @@
-require 'employee'
+require 'lib/employee'
 class Schedule
   def initialize
     @no_shifts = 3 #morning, afternoon, overnight.
