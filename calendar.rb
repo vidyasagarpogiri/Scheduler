@@ -4,4 +4,5 @@ class Calendar < Loader
   def initialize
     set_date
   end
+  def 
 end

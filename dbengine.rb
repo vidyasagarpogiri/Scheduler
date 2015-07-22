@@ -1,5 +1,5 @@
 $LOAD_PATH << "."
-require 'mongoose'
+require 'mongo'
 ################################################################
 #just making an obvious note that this file needs A LOT of work#
 ################################################################
@@ -7,6 +7,7 @@ class DBEngine
   def initialize
   	load_db
   	@url = "mongodb://#{@username}:#{@password}@ds049288.mongolab.com:49288/scheduler"
+    @client = Mongo::Client.new(@url)
   end
   def load_db
   	fd = File.open("dbinfo.txt", "r")
@@ -22,3 +23,5 @@ class DBEngine
 
   end
 end
+
+client = DBEngine.new
