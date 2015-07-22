@@ -1,6 +1,3 @@
-$LOAD_PATH << "."
-require 'loader'
-
 #this class essentially sets up things such as the user interface
 
 class Interface < Shoes
